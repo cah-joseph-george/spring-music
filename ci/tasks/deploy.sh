@@ -20,4 +20,10 @@ fi
 
 cf target -s ${SPACE}
 
-cf push
+cf push -f source/manifest.yml --no-start
+
+cf create-service aws-rds-mysql Dev spring-music-db
+
+cf bind-service spring-music spring-music-db
+
+cf start spring-music
