@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -x
 
+ln -sf build source/build
+
 cf api ${CF_API_URI}
 cf auth ${CF_USERNAME} ${CF_PASSWORD}
 
