@@ -3,3 +3,5 @@ set -e
 
 cd source
 ./gradlew clean assemble
+
+cp -R build/* ../build
