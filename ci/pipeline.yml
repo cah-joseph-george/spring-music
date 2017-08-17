@@ -1,0 +1,24 @@
+resources:
+- name: source
+  type: git
+  source:
+    uri: https://github.com/cah-josephgeorge/spring-music.git
+    branch: develop
+
+jobs:
+- name: assemble
+  plan:
+  - get: source
+  - task: build-jar
+    file: source/ci/tasks/build-jar.yml
+  - task: deploy
+    file: source/ci/tasks/deploy.yml
+    params:
+      <<: *cf_api_params
+      ORG: prime
+      SPACE: spring-music
+
+cf_api_params: &cf_api_params
+  CF_API_URI: ((cf.uri))
+  CF_USERNAME: ((cf.user))
+  CF_PASSWORD: ((cf.password))

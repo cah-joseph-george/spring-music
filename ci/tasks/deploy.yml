@@ -1,0 +1,20 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: czero/cflinuxfs2
+
+inputs:
+  - name: source
+
+run:
+  path: source/ci/tasks/deploy.sh
+
+params:
+  CF_API_URI:
+  CF_USERNAME:
+  CF_PASSWORD:
+  ORG:
+  SPACE:
