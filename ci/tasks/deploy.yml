@@ -2,9 +2,13 @@
 platform: linux
 
 image_resource:
-  type: docker-image
+  type: registry-image
   source:
     repository: czero/cflinuxfs2
+
+container_limits:
+  memory: 1Gb
+  cpu: 256
 
 inputs:
   - name: source
