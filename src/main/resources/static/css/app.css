@@ -9,13 +9,13 @@
 }
 
 .navbar .container {
-    background-color: #e41f36;
-    background-image: -moz-linear-gradient(top, #e41f36, #42070e);
-    background-image: -ms-linear-gradient(top, #e41f36, #42070e);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e41f36), to(#42070e));
-    background-image: -webkit-linear-gradient(top, #e41f36, #42070e);
-    background-image: -o-linear-gradient(top, #e41f36, #42070e);
-    background-image: linear-gradient(top, #e41f36, #42070e);
+    background-color: #2714cc;
+    background-image: -moz-linear-gradient(top, #2714cc, #0d0742);
+    background-image: -ms-linear-gradient(top, #2714cc, #0d0742);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2714cc), to(#0d0742));
+    background-image: -webkit-linear-gradient(top, #2714cc, #0d0742);
+    background-image: -o-linear-gradient(top, #2714cc, #0d0742);
+    background-image: linear-gradient(top, #2714cc, #0d0742);
 }
 
 .navbar .navbar-brand {

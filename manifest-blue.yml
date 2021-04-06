@@ -1,0 +1,27 @@
+---
+applications:
+  - name: spring-music-blue
+    buildpacks:
+      - java_buildpack_offline
+    env:
+      JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+    path: build/libs/spring-music-blue-1.0.jar
+    processes:
+      - type: web
+        memory: 1G
+        instances: 2
+        health-check-http-endpoint: /actuator/health
+        health-check-type: http
+        health-check-invocation-timeout: 5
+    random-route: false
+    routes:
+      - route: spring-music.apps.cf.np.gc.cahcloud.net
+      - route: spring-music-blue.apps.cf.np.gc.cahcloud.net
+    metadata:
+      annotations:
+        contact: "g-eit-cloudfoundryadmin@cardinalhealth.com"
+      labels:
+        APMid: "867-5309"
+        environment: "development"
+        ingress_route: "UI"
