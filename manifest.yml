@@ -6,8 +6,17 @@ applications:
   path: build/libs/spring-music-1.0.jar
   buildpacks:
     - java_buildpack_offline
-  instances: 3
+  instances: 2
+  health-check-http-endpoint: /actuator/health
+  health-check-type: http
+  health-check-invocation-timeout: 5
   env:
     JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
     JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
-
+  metadata:
+    annotations:
+      contact: "g-eit-cloudfoundryadmin@cardinal.com"
+    labels:
+      APMid: "867-5309"
+      environment: "development"
+      ingress_route: "UI"
