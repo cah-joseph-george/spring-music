@@ -1,21 +1,26 @@
 ---
 applications:
-- name: spring-music
-  memory: 1G
-  random-route: false
-  path: build/libs/spring-music-1.0.jar
+- name: spring-music-rolling
   buildpacks:
     - java_buildpack_offline
-  instances: 2
-  health-check-http-endpoint: /actuator/health
-  health-check-type: http
-  health-check-invocation-timeout: 5
   env:
     JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
     JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+  path: build/libs/spring-music-1.0.jar
+  processes:
+  - type: web
+    memory: 1G
+    instances: 2
+    health-check-http-endpoint: /actuator/health
+    health-check-type: http
+    health-check-invocation-timeout: 5
+  random-route: false
+  routes:
+  - route: spring-music.apps.cf.np.gc.cahcloud.net
+  - route: spring-music-rolling.apps.cf.np.gc.cahcloud.net
   metadata:
     annotations:
-      contact: "g-eit-cloudfoundryadmin@cardinal.com"
+      contact: "g-eit-cloudfoundryadmin@cardinalhealth.com"
     labels:
       APMid: "867-5309"
       environment: "development"
